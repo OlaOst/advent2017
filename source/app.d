@@ -2,16 +2,15 @@ import std.stdio : writeln;
 
 void main()
 {
-	
+	368078.steps.writeln;
 }
 
 unittest
 {
-  //for (int i = 1; i < 27; i++)
-    //writeln("circle for ", i, ": ", steps(i));
-  
   assert(steps(1) == 0);
   assert(steps(12) == 3);
+  assert(steps(23) == 2);
+  assert(steps(1024) == 31);
 }
 int steps(int input)
 {
@@ -22,11 +21,7 @@ int steps(int input)
   
   auto circle = (cast(int)sqrt(cast(float)input - 1) - 1) / 2 + 1;
   
-  writeln("circle for ", input, ": ", circle);
-  
   auto circleEnd = (circle*2+1)*(circle*2+1);
-  
-  writeln("circleEnd: ", circleEnd);
   
   auto sideLength = circle * 2;
   
@@ -34,12 +29,19 @@ int steps(int input)
                     circleEnd - sideLength*2 + sideLength/2,
                     circleEnd - sideLength*3 + sideLength/2,
                     circleEnd - sideLength*4 + sideLength/2];
-  
-  midpoints.writeln;
-  
-  auto offset = sideLength * 4 - input;
+    
+  import std.algorithm : map;
+  import std.math : abs;
+  auto offsets = midpoints.map!(midpoint => abs(midpoint - input));
 
-  writeln("sidelength ", sideLength, ", offset ", offset);
-  
-  return circle;
+  import std.array : array;
+  auto stepsToMidpoint = offsets.array.minElement;
+
+  return circle + stepsToMidpoint;
+}
+
+Type minElement(Type)(Type[] elements)
+{
+  import std.algorithm : reduce;
+  return reduce!((left, right) => left < right ? left : right)(elements);
 }
