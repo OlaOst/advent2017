@@ -12,5 +12,7 @@ void main()
   
   import day4part1;
   "day4.txt".readText.split("\n").countValids.writeln;
+  import day4part2;
+  "day4.txt".readText.split("\n").countNoAnagrams.writeln;
 }
 
