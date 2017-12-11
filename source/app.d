@@ -18,13 +18,15 @@ void main()
   //import day4part2;
   //"day4.txt".readText.split("\n").countNoAnagrams.writeln;
   
-  import day5part1;
-  "day5.txt".readText
-            .split("\n")
-            .filter!(line => line.strip.length > 0)
-            .map!(line => line.to!int)
-            .array
-            .stepsToExit
-            .writeln;
+  auto input = "day5.txt".readText
+                         .split("\n")
+                         .filter!(line => line.strip.length > 0)
+                         .map!(line => line.to!int)
+                         .array;
+  
+  //import day5part1;          
+  //input.stepsToExit.writeln;
+  import day5part2;
+  input.stepsToExit.writeln;
 }
 
