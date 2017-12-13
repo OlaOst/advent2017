@@ -32,5 +32,7 @@ void main()
   
   import day6part1;
   "day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesUntilRepetition.writeln;
+  import day6part2;
+  "day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesInRepetition.writeln;
 }
 
