@@ -17,7 +17,7 @@ void main()
   //"day4.txt".readText.split("\n").countValids.writeln;
   //import day4part2;
   //"day4.txt".readText.split("\n").countNoAnagrams.writeln;
-  
+  /*
   auto input = "day5.txt".readText
                          .split("\n")
                          .filter!(line => line.strip.length > 0)
@@ -28,5 +28,9 @@ void main()
   //input.stepsToExit.writeln;
   import day5part2;
   input.stepsToExit.writeln;
+  */
+  
+  import day6part1;
+  "day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesUntilRepetition.writeln;
 }
 
