@@ -30,9 +30,12 @@ void main()
   input.stepsToExit.writeln;
   */
   
-  import day6part1;
-  "day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesUntilRepetition.writeln;
-  import day6part2;
-  "day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesInRepetition.writeln;
+  //import day6part1;
+  //"day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesUntilRepetition.writeln;
+  //import day6part2;
+  //"day6.txt".readText.split("\t").map!(part => part.strip.to!int).array.cyclesInRepetition.writeln;
+  
+  import day7part1;
+  "day7.txt".readText.bottomProgram.writeln;
 }
 
