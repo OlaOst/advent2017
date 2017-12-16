@@ -21,17 +21,10 @@ cntj (57)`;
 }
 string bottomProgram(string input)
 {
-  import std.algorithm : filter, map;
-  import std.regex : matchFirst, regex;
+  auto matches = input.getMatches();
+  
+  import std.algorithm : filter, map;     
   import std.string : split;
-  
-  
-  auto matcher = regex(r"([a-z]*) \(([0-9]*)\)(.*)?");
-  
-  auto matches = input.split("\n")
-                      .map!(line => line.matchFirst(matcher))
-                      .filter!(match => !match.empty);
-       
   auto names = matches.map!(match => match[1]);
   
   auto children = matches.map!(match => match[3])
@@ -45,4 +38,19 @@ string bottomProgram(string input)
   auto diff = sort(names.array).setDifference(sort(children.join.array));
   
   return diff.front;
+}
+
+auto getMatches(string input)
+{
+  import std.algorithm : filter, map;
+  import std.regex : matchFirst, regex;
+  import std.string : split;
+  
+  auto matcher = regex(r"([a-z]*) \(([0-9]*)\)(.*)?");
+  
+  auto matches = input.split("\n")
+                      .map!(line => line.matchFirst(matcher))
+                      .filter!(match => !match.empty);
+                      
+  return matches;
 }
